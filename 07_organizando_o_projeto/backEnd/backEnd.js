@@ -32,7 +32,8 @@ app.get('/contatos', function(req, res) {
 });
 
 app.post('/contatos', function(req, res) {
-  res.json(true);
+ contatos.push(req.body); 
+ res.json(true);
 });
 
 app.get('/operadoras', function(req, res) {
