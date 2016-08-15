@@ -11,7 +11,11 @@ angular.module("listaTelefonica").directive("uiAccordions", function() {
         accordions.forEach(function(accordion) {
           accordion.isOpened = false;
         });
-      }
+      };
+
+      this.close = function(accordion) {
+        accordion.isOpened = false;
+      };
 
     }
   };
@@ -28,8 +32,12 @@ angular.module("listaTelefonica").directive("uiAccordion", function() {
     link: function(scope, element, attrs, ctrl) {
       ctrl.registerAccordion(scope);
       scope.open = function() {
-        ctrl.closeAll();
-        scope.isOpened = true;
+        if(scope.isOpened === true) {
+          ctrl.close(scope);
+        }else {
+          ctrl.closeAll();
+          scope.isOpened = true;
+        }
       }
     }
   };
